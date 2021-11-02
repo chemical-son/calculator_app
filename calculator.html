@@ -30,7 +30,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: skyblue;
+        background-color: darkslategray;
         width:100vw; 
         height:100vh ;
         padding:0;
@@ -52,6 +52,7 @@
             <span><input type="button" value="-" onclick="sendOperation(this.value)"></span>
             <span><input type="button" value="*" onclick="sendOperation(this.value)"></span>
             <span><input type="button" value="/" onclick="sendOperation(this.value)"></span>
+            <span><input type="button" value="pow" onclick="sendOperation(this.value)"></span>
         </div>
 
         <div class="flex" style="background-color: brown;">
@@ -71,9 +72,9 @@
         </div>  
 
         <div class="flex">
-            <span><input type="button" value="c" onclick = "result.value = ''" onclick="clear()"></span>
-            <span><input type="button" value="0" onclick = "store(this.value)"></span>
-            <span><input type="button" value="=" onclick="getResult()"></span>
+            <span><input type="button" value="c" onclick = "_clear()" /></span>
+            <span><input type="button" value="0" onclick = "store(this.value)" /></span>
+            <span><input type="button" value="=" onclick = "getResult()" /></span>
         </div>  
     </div>
 
@@ -91,7 +92,9 @@ function sendOperation(o){
         operation = '*';
     else if(o === '/')
         operation = '/';
-    //console.log(operation);
+    else if(o === "pow")
+        operation = "pow";
+    // console.log(operation);
     previous = result.value;
     result.value = '';
     // console.log(previous.toString() + operation);
@@ -102,15 +105,16 @@ function sendOperation(o){
 //then when the user click =  the equal button 
 //the operation is done on the previous and the current value of the textbox then it showed on the same textbox
 
-function clear()
-{
-	result.value ='';
+function _clear(){
+	result.value = '';
 	operation = '';
 }
+
 function getResult()
 {
 //here the function that used to get the result
 //it check on the operation like this.:
+
 	if(operation =='+')
 		result.value = parseInt(previous) + parseInt(result.value);
 	else if(operation =='-')
@@ -119,6 +123,9 @@ function getResult()
 		result.value = parseInt(previous) * parseInt(result.value);
     else if(operation =='/')
 		result.value = parseInt(previous) / parseInt(result.value);
+    else if(operation == "pow"){
+        result.value = Math.pow(parseInt(previous), parseInt(result.value));
+    }
 		
 	operation = '';
 	previous = '';
