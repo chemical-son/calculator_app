@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .flex
+        {
+            width:100%;
+            display: flex;
+        }
+        span>input
+        {
+            width:100%;
+            height:100%;
+        }
+        #result
+        {
+            height:20px;
+            padding: 8px 0 ;
+        }        
+        span
+        {
+            height: 50px;
+            flex-grow: 1;
+        }
+        body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: skyblue;
+        width:100vw; 
+        height:100vh ;
+        padding:0;
+        margin:0;
+        }
+    </style>
+
+</head>
+<body>
+   
+    <div style="border: green 1px solid; border-radius: 10px;">
+        
+        <div class="flex">
+            <input type="number" id="result">
+        </div>
+
+        <div class="flex">
+            <span><input type="button" value="+"></span>
+            <span><input type="button" value="-"></span>
+            <span><input type="button" value="*"></span>
+            <span><input type="button" value="/"></span>
+        </div>
+
+        <div class="flex" style="background-color: brown;">
+            <span><input type="button" value="1" onclick="store(this.value)"></span>
+            <span><input type="button" value="2" onclick="store(this.value)"></span>
+            <span><input type="button" value="3" onclick="store(this.value)"></span>
+        </div> 
+        <div class="flex">
+            <span><input type="button" value="4" onclick="store(this.value)"></span>
+            <span><input type="button" value="5" onclick="store(this.value)"></span>
+            <span><input type="button" value="6" onclick="store(this.value)"></span>
+        </div>
+        <div class="flex">
+            <span><input type="button" value="7"onclick="store(this.value)"></span>
+            <span><input type="button" value="8" onclick="store(this.value)"></span>
+            <span><input type="button" value="9" onclick="store(this.value)"></span>
+        </div>  
+
+        <div class="flex">
+            <span><input type="button" value="c" onclick = "result.value = ''"></span>
+            <span><input type="button" value="0" onclick = "store(this.value)"></span>
+            <span><input type="button" value="="></span>
+        </div>  
+    </div>
+
+
+<script>
+let operation =''
+let previous;
+//here you can change the operation with a function
+//when the user click for example +
+// the operation become +
+//and the value of the textbox is stored at previous variable
+//then when the user click =  the equal button 
+//the operation is done on the previous and the current value of the textbox then it showed on the same textbox
+
+function store(x)
+{
+newNumber = result.value + "" + x
+result.value = newNumber
+}
+
+</script>
+</body>
+
+</html>
